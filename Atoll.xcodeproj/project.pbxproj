@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC7C8AED1EEF742400CD29D4 /* Atoll_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll_macOS.framework */; };
+		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
 		FC7C8AF41EEF742400CD29D4 /* Atoll.h in Headers */ = {isa = PBXBuildFile; fileRef = FC7C8AE61EEF742400CD29D4 /* Atoll.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -23,7 +23,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FC7C8AE31EEF742400CD29D4 /* Atoll_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atoll_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7C8AE31EEF742400CD29D4 /* Atoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7C8AE61EEF742400CD29D4 /* Atoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atoll.h; sourceTree = "<group>"; };
 		FC7C8AE71EEF742400CD29D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC7C8AEC1EEF742400CD29D4 /* Atoll-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Atoll-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC7C8AED1EEF742400CD29D4 /* Atoll_macOS.framework in Frameworks */,
+				FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 		FC7C8AE41EEF742400CD29D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC7C8AE31EEF742400CD29D4 /* Atoll_macOS.framework */,
+				FC7C8AE31EEF742400CD29D4 /* Atoll.framework */,
 				FC7C8AEC1EEF742400CD29D4 /* Atoll-macOS Tests.xctest */,
 			);
 			name = Products;
@@ -115,7 +115,7 @@
 			);
 			name = "Atoll-macOS";
 			productName = Atoll;
-			productReference = FC7C8AE31EEF742400CD29D4 /* Atoll_macOS.framework */;
+			productReference = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FC7C8AEB1EEF742400CD29D4 /* Atoll-macOS Tests */ = {
@@ -243,10 +243,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -301,10 +302,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -338,8 +340,9 @@
 				INFOPLIST_FILE = Atoll/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Atoll;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_MODULE_NAME = Atoll;
+				PRODUCT_NAME = Atoll;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
@@ -359,8 +362,9 @@
 				INFOPLIST_FILE = Atoll/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.bvr.Atoll;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_MODULE_NAME = Atoll;
+				PRODUCT_NAME = Atoll;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
