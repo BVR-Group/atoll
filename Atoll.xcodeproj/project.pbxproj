@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC2E96471EF2DFE9001D5547 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E96461EF2DFE9001D5547 /* List.swift */; };
 		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
 		FC7C8AF41EEF742400CD29D4 /* Atoll.h in Headers */ = {isa = PBXBuildFile; fileRef = FC7C8AE61EEF742400CD29D4 /* Atoll.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC2E96461EF2DFE9001D5547 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		FC7C8AE31EEF742400CD29D4 /* Atoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7C8AE61EEF742400CD29D4 /* Atoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atoll.h; sourceTree = "<group>"; };
 		FC7C8AE71EEF742400CD29D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				FC7C8AE61EEF742400CD29D4 /* Atoll.h */,
 				FC7C8AE71EEF742400CD29D4 /* Info.plist */,
+				FC2E96461EF2DFE9001D5547 /* List.swift */,
 			);
 			path = Atoll;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					FC7C8AE21EEF742400CD29D4 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 					};
 					FC7C8AEB1EEF742400CD29D4 = {
 						CreatedOnToolsVersion = 9.0;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2E96471EF2DFE9001D5547 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +334,7 @@
 		FC7C8AF81EEF742400CD29D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -344,6 +350,7 @@
 				PRODUCT_MODULE_NAME = Atoll;
 				PRODUCT_NAME = Atoll;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -351,6 +358,7 @@
 		FC7C8AF91EEF742400CD29D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -373,6 +381,7 @@
 		FC7C8AFB1EEF742400CD29D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
 				INFOPLIST_FILE = AtollTests/Info.plist;
@@ -386,6 +395,7 @@
 		FC7C8AFC1EEF742400CD29D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2UJ5F4MU5U;
 				INFOPLIST_FILE = AtollTests/Info.plist;
@@ -415,6 +425,7 @@
 				FC7C8AF91EEF742400CD29D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC7C8AFA1EEF742400CD29D4 /* Build configuration list for PBXNativeTarget "Atoll-macOS Tests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +434,7 @@
 				FC7C8AFC1EEF742400CD29D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

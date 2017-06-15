@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC7C8AE21EEF742400CD29D4"
-               BuildableName = "Atoll_macOS.framework"
+               BuildableName = "Atoll.framework"
                BlueprintName = "Atoll-macOS"
                ReferencedContainer = "container:Atoll.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC7C8AE21EEF742400CD29D4"
-            BuildableName = "Atoll_macOS.framework"
+            BuildableName = "Atoll.framework"
             BlueprintName = "Atoll-macOS"
             ReferencedContainer = "container:Atoll.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC7C8AE21EEF742400CD29D4"
-            BuildableName = "Atoll_macOS.framework"
+            BuildableName = "Atoll.framework"
             BlueprintName = "Atoll-macOS"
             ReferencedContainer = "container:Atoll.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC7C8AE21EEF742400CD29D4"
-            BuildableName = "Atoll_macOS.framework"
+            BuildableName = "Atoll.framework"
             BlueprintName = "Atoll-macOS"
             ReferencedContainer = "container:Atoll.xcodeproj">
          </BuildableReference>
