@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FC2E96471EF2DFE9001D5547 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E96461EF2DFE9001D5547 /* List.swift */; };
+		FC51F3B71EF990900050E81C /* List+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC51F3B61EF990900050E81C /* List+Operations.swift */; };
+		FC51F3B81EF990900050E81C /* List+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC51F3B61EF990900050E81C /* List+Operations.swift */; };
 		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
 		FC7C8AF41EEF742400CD29D4 /* Atoll.h in Headers */ = {isa = PBXBuildFile; fileRef = FC7C8AE61EEF742400CD29D4 /* Atoll.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		FC2E96461EF2DFE9001D5547 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		FC51F3B61EF990900050E81C /* List+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+Operations.swift"; sourceTree = "<group>"; };
 		FC7C8AE31EEF742400CD29D4 /* Atoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7C8AE61EEF742400CD29D4 /* Atoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atoll.h; sourceTree = "<group>"; };
 		FC7C8AE71EEF742400CD29D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 				FC7C8AE61EEF742400CD29D4 /* Atoll.h */,
 				FC7C8AE71EEF742400CD29D4 /* Info.plist */,
 				FC2E96461EF2DFE9001D5547 /* List.swift */,
+				FC51F3B61EF990900050E81C /* List+Operations.swift */,
 				FCE84D6F1EF33CEB00390C2C /* List+Operators.swift */,
 				FCE84D711EF3403A00390C2C /* Types.swift */,
 			);
@@ -207,6 +211,7 @@
 				FCE84D721EF3403A00390C2C /* Types.swift in Sources */,
 				FC2E96471EF2DFE9001D5547 /* List.swift in Sources */,
 				FCE84D701EF33CEB00390C2C /* List+Operators.swift in Sources */,
+				FC51F3B71EF990900050E81C /* List+Operations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */,
+				FC51F3B81EF990900050E81C /* List+Operations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

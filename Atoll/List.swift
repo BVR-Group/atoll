@@ -14,7 +14,7 @@ import Foundation
 public struct List<Element: SignedNumeric> {
     private var value: UnsafeMutablePointer<Element>
 
-    public var storage: UnsafeMutablePointer<Element> {
+    public var pointer: UnsafeMutablePointer<Element> {
         return value
     }
 
@@ -32,7 +32,6 @@ public struct List<Element: SignedNumeric> {
         return result
     }
 }
-
 
 extension List: ExpressibleByArrayLiteral {
     public typealias ArrayLiteralElement = Element
@@ -53,7 +52,7 @@ extension List: MutableCollection, RandomAccessCollection {
             return UnsafeMutableBufferPointer(start: value, count: count)[index]
         }
         set(newValue) {
-            self.replace(index: index, with: newValue)
+            UnsafeMutableBufferPointer(start: value, count: count)[index] = newValue
         }
     }
 
@@ -64,8 +63,11 @@ extension List: MutableCollection, RandomAccessCollection {
     public var endIndex: Int {
         return UnsafeMutableBufferPointer(start: value, count: count).endIndex
     }
+}
 
-    public func replace(index: Int, with element: Element) {
-        UnsafeMutableBufferPointer(start: value, count: count)[index] = element
+extension List: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return self.map({ $0 }).debugDescription
     }
 }
+
