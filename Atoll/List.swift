@@ -8,28 +8,28 @@
 
 import Foundation
 
-/// Represents an ordered, fixed sized, reference semantic backed list of `SignedNumeric` elements that conforms to `MutableCollection` and `RandomAccessCollection`.
+/// Represents an ordered, fixed sized, reference semantic list of `SignedNumeric` elements that conforms to
+/// `MutableCollection` and `RandomAccessCollection`.
 ///
 public struct List<Element: SignedNumeric> {
-    private var value: ManagedBuffer<Int, Element>
-
-    public var count: Int {
-        return value.withUnsafeMutablePointerToHeader { $0.pointee }
-    }
-
-    public var capacity: Int {
-        return value.capacity
-    }
+    private var value: UnsafeMutablePointer<Element>
 
     public var storage: UnsafeMutablePointer<Element> {
-        return value.withUnsafeMutablePointerToElements { $0 }
+        return value
     }
 
+    public var count: Int
+
     public init(repeating element: Element, count: Int) {
-        value = ManagedBuffer<Int, Element>.create(minimumCapacity: count, makingHeaderWith: { _ in return count })
-        value.withUnsafeMutablePointerToElements({
-            $0.initialize(to: element, count: count)
-        })
+        self.count = count
+        self.value = UnsafeMutablePointer<Element>.allocate(capacity: count)
+        _ = UnsafeMutableBufferPointer(start: value, count: count).initialize(from: (0..<count).map({ _ in return element }))
+    }
+
+    public func copy() -> List<Element> {
+        let result = List<Element>.init(repeating: 0, count: count)
+        result.value.assign(from: value, count: count)
+        return result
     }
 }
 
@@ -50,8 +50,7 @@ extension List: MutableCollection, RandomAccessCollection {
 
     public subscript(index: Index) -> Element {
         get {
-            precondition(index >= startIndex && index < endIndex, "Index out of bounds.")
-            return value.withUnsafeMutablePointerToElements { $0[index] }
+            return UnsafeMutableBufferPointer(start: value, count: count)[index]
         }
         set(newValue) {
             self.replace(index: index, with: newValue)
@@ -59,15 +58,14 @@ extension List: MutableCollection, RandomAccessCollection {
     }
 
     public var startIndex: Int {
-        return 0
+        return UnsafeMutableBufferPointer(start: value, count: count).startIndex
     }
 
     public var endIndex: Int {
-        return value.capacity - 1
+        return UnsafeMutableBufferPointer(start: value, count: count).endIndex
     }
 
     public func replace(index: Int, with element: Element) {
-        precondition(index >= startIndex && index < endIndex, "Index out of bounds.")
-        value.withUnsafeMutablePointerToElements { $0[index] = element }
+        UnsafeMutableBufferPointer(start: value, count: count)[index] = element
     }
 }
