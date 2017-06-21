@@ -13,3 +13,7 @@ listA * listB
 listA / listB
 
 pow(listA, listB)
+
+withUnsafeMutablePointers(to: listA, and: listB) { (a, b) in
+    print(a, b)
+}

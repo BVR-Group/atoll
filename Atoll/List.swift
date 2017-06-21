@@ -18,12 +18,16 @@ public struct List<Element: SignedNumeric> {
         return value
     }
 
-    public var count: Int
+    public let count: Int
 
     public init(repeating element: Element, count: Int) {
         self.count = count
         self.value = UnsafeMutablePointer<Element>.allocate(capacity: count)
         _ = UnsafeMutableBufferPointer(start: value, count: count).initialize(from: (0..<count).map({ _ in return element }))
+    }
+
+    public init(count: Int) {
+        self.init(repeating: 0, count: count)
     }
 
     public func copy() -> List<Element> {

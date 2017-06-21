@@ -10,8 +10,3 @@ import Foundation
 
 public typealias DoubleList = List<Double>
 public typealias FloatList = List<Float>
-
-public protocol FloatValue {}
-
-extension Double: FloatValue {}
-extension Float: FloatValue {}

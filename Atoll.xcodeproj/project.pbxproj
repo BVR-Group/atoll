@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC2E96471EF2DFE9001D5547 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E96461EF2DFE9001D5547 /* List.swift */; };
 		FC51F3B71EF990900050E81C /* List+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC51F3B61EF990900050E81C /* List+Operations.swift */; };
-		FC51F3B81EF990900050E81C /* List+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC51F3B61EF990900050E81C /* List+Operations.swift */; };
 		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
 		FC7C8AF41EEF742400CD29D4 /* Atoll.h in Headers */ = {isa = PBXBuildFile; fileRef = FC7C8AE61EEF742400CD29D4 /* Atoll.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -220,7 +219,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */,
-				FC51F3B81EF990900050E81C /* List+Operations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
