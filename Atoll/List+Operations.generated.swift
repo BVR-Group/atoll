@@ -48,6 +48,7 @@ public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Vo
     return result
 }
 
+// Doubles
 
 public func pow(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     return result(from: x) { result in
@@ -55,16 +56,71 @@ public func pow(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     }
 }
 
+public func sqrt(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vvsqrt(result, x.pointer, x.countPointer)
+    }
+}
+
+public func mod(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vvfmod(result, x.pointer, y.pointer, x.countPointer)
+    }
+}
+
+public func rootMeanSquare(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_rmsqvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func meanSquare(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_measqvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func mean(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_meanvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func meanMagnitude(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_meamgvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func min(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_minvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func max(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_maxvD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func abs(_ x: DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vDSP_vabsD(x.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+// Floats
+
 public func pow(_ x: FloatList, _ y: FloatList) -> FloatList {
     return result(from: x) { result in
         vvpowf(result, x.pointer, y.pointer, x.countPointer)
     }
 }
 
-
-public func mod(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+public func sqrt(_ x: FloatList) -> Float {
     return result(from: x) { result in
-        vvfmod(result, x.pointer, y.pointer, x.countPointer)
+        vvsqrtf(result, x.pointer, x.countPointer)
     }
 }
 
@@ -74,10 +130,15 @@ public func mod(_ x: FloatList, _ y: FloatList) -> FloatList {
     }
 }
 
-
-public func mean(_ x: DoubleList) -> Double {
+public func rootMeanSquare(_ x: FloatList) -> Float {
     return result(from: x) { result in
-        vDSP_meanvD(x.pointer, 1, result, x.vDSP_Length)
+        vDSP_rmsqv(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func meanSquare(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vDSP_measqv(x.pointer, 1, result, x.vDSP_Length)
     }
 }
 
@@ -87,3 +148,26 @@ public func mean(_ x: FloatList) -> Float {
     }
 }
 
+public func meanMagnitude(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vDSP_meamgv(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func min(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vDSP_minv(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func max(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vDSP_maxv(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func abs(_ x: FloatList) -> FloatList {
+    return result(from: x) { result in
+        vDSP_vabs(x.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}

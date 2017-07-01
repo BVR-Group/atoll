@@ -44,31 +44,67 @@ public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Vo
     block(result.pointer)
     return result
 }
-
-
 {% for type in types.implementing.SupportedFloatType %}
+
+// {{ type.name }}s
+
 public func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
     }
 }
 
-{% endfor %}
+public func sqrt(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vvsqrt{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+    }
+}
 
-{% for type in types.implementing.SupportedFloatType %}
 public func mod(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vvfmod{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
     }
 }
 
-{% endfor %}
+public func rootMeanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_rmsqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
 
-{% for type in types.implementing.SupportedFloatType %}
+public func meanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_measqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
 public func mean(_ x: {{ type.name }}List) -> {{ type.name }} {
     return result(from: x) { result in
         vDSP_meanv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
     }
 }
 
+public func meanMagnitude(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_meamgv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func min(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_minv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func max(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_maxv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+public func abs(_ x: {{ type.name }}List) -> {{ type.name }}List {
+    return result(from: x) { result in
+        vDSP_vabs{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
 {% endfor %}

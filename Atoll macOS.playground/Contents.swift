@@ -22,3 +22,6 @@ withUnsafeMutablePointers(to: listA, and: listB) { (a, b) in
 mod(listA, listB)
 mean(listA)
 mean(listC)
+rootMeanSquare(listA)
+meanSquare(listA)
+sqrt(listA)
