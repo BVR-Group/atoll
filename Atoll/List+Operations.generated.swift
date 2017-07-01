@@ -56,15 +56,36 @@ public func add(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     }
 }
 
+public func add(_ x: DoubleList, _ y: Double) -> DoubleList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsaddD(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func subtract(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     return result(from: x) { result in
         vDSP_vsubD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
     }
 }
 
+public func subtract(_ x: DoubleList, _ y:Double) -> DoubleList {
+    var value = -y
+    return result(from: x) { result in
+        vDSP_vsaddD(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func divide(_ x: DoubleList, _ y:DoubleList) -> DoubleList {
     return result(from: x) { result in
         vDSP_vdivD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: DoubleList, _ y:Double) -> DoubleList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsdivD(x.pointer, 1, &value, result, 1, x.vDSP_Length)
     }
 }
 
@@ -155,15 +176,36 @@ public func add(_ x: FloatList, _ y: FloatList) -> FloatList {
     }
 }
 
+public func add(_ x: FloatList, _ y: Float) -> FloatList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsadd(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func subtract(_ x: FloatList, _ y: FloatList) -> FloatList {
     return result(from: x) { result in
         vDSP_vsub(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
     }
 }
 
+public func subtract(_ x: FloatList, _ y:Float) -> FloatList {
+    var value = -y
+    return result(from: x) { result in
+        vDSP_vsadd(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func divide(_ x: FloatList, _ y:FloatList) -> FloatList {
     return result(from: x) { result in
         vDSP_vdiv(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: FloatList, _ y:Float) -> FloatList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsdiv(x.pointer, 1, &value, result, 1, x.vDSP_Length)
     }
 }
 

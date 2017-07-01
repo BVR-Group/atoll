@@ -20,11 +20,23 @@ public func * (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
     return multiply(lhs, rhs)
 }
 
+public func / (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
+    return divide(lhs, rhs)
+}
+
+public func + (lhs: DoubleList, rhs: Double) -> DoubleList {
+    return add(lhs, rhs)
+}
+
+public func - (lhs: DoubleList, rhs: Double) -> DoubleList {
+    return subtract(lhs, rhs)
+}
+
 public func * (lhs: DoubleList, rhs: Double) -> DoubleList {
     return multiply(lhs, rhs)
 }
 
-public func / (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
+public func / (lhs: DoubleList, rhs: Double) -> DoubleList {
     return divide(lhs, rhs)
 }
 
@@ -42,10 +54,22 @@ public func * (lhs: FloatList, rhs: FloatList) -> FloatList {
     return multiply(lhs, rhs)
 }
 
+public func / (lhs: FloatList, rhs: FloatList) -> FloatList {
+    return divide(lhs, rhs)
+}
+
+public func + (lhs: FloatList, rhs: Float) -> FloatList {
+    return add(lhs, rhs)
+}
+
+public func - (lhs: FloatList, rhs: Float) -> FloatList {
+    return subtract(lhs, rhs)
+}
+
 public func * (lhs: FloatList, rhs: Float) -> FloatList {
     return multiply(lhs, rhs)
 }
 
-public func / (lhs: FloatList, rhs: FloatList) -> FloatList {
+public func / (lhs: FloatList, rhs: Float) -> FloatList {
     return divide(lhs, rhs)
 }

@@ -30,3 +30,5 @@ sum(listC)
 
 add(listA, listB)
 min(listA + listB)
+listA + .pi
+listA * 2

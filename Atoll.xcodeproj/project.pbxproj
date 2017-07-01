@@ -86,8 +86,8 @@
 				FC2E96461EF2DFE9001D5547 /* List.swift */,
 				FCB0D9631F06E3D1002D962B /* List+Operations.generated.swift */,
 				FCC800E01F084DCB0031888B /* List+Operators.generated.swift */,
-				FCB0D95D1F06D47F002D962B /* Templates */,
 				FCE84D711EF3403A00390C2C /* Types.swift */,
+				FCB0D95D1F06D47F002D962B /* Templates */,
 			);
 			path = Atoll;
 			sourceTree = "<group>";

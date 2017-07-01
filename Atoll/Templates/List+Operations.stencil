@@ -54,15 +54,36 @@ public func add(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.n
     }
 }
 
+public func add(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func subtract(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
     }
 }
 
+public func subtract(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
+    var value = -y
+    return result(from: x) { result in
+        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
 public func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vDSP_vdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
     }
 }
 
