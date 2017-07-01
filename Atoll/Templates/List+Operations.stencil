@@ -48,6 +48,43 @@ public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Vo
 
 // {{ type.name }}s
 
+public func add(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+    return result(from: x) { result in
+        vDSP_vadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func subtract(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+    return result(from: x) { result in
+        vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}List) -> {{ type.name }}List {
+    return result(from: x) { result in
+        vDSP_vdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+    return result(from: x) { result in
+        vDSP_vmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
+public func sum(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_sve{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
 public func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)

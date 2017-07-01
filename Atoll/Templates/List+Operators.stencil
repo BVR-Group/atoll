@@ -1,0 +1,28 @@
+fileprivate func checkCount<T>(lhs: List<T>, rhs: List<T>) {
+    precondition(lhs.count == rhs.count, "Expected Lists of equal length.")
+}
+
+{% for type in types.implementing.SupportedFloatType %}
+
+// {{ type.name }}s
+
+public func + (lhs: {{ type.name }}List, rhs: {{ type.name }}List) -> {{ type.name }}List {
+    return add(lhs, rhs)
+}
+
+public func - (lhs: {{ type.name }}List, rhs: {{ type.name }}List) -> {{ type.name }}List {
+    return subtract(lhs, rhs)
+}
+
+public func * (lhs: {{ type.name }}List, rhs: {{ type.name }}List) -> {{ type.name }}List {
+    return multiply(lhs, rhs)
+}
+
+public func * (lhs: {{ type.name }}List, rhs: {{ type.name }}) -> {{ type.name }}List {
+    return multiply(lhs, rhs)
+}
+
+public func / (lhs: {{ type.name }}List, rhs: {{ type.name }}List) -> {{ type.name }}List {
+    return divide(lhs, rhs)
+}
+{% endfor %}

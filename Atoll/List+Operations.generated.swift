@@ -50,6 +50,43 @@ public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Vo
 
 // Doubles
 
+public func add(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vDSP_vaddD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func subtract(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vDSP_vsubD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: DoubleList, _ y:DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vDSP_vdivD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+    return result(from: x) { result in
+        vDSP_vmulD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: DoubleList, _ y: Double) -> DoubleList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsmulD(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
+public func sum(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vDSP_sveD(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
 public func pow(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     return result(from: x) { result in
         vvpow(result, x.pointer, y.pointer, x.countPointer)
@@ -111,6 +148,43 @@ public func abs(_ x: DoubleList) -> DoubleList {
 }
 
 // Floats
+
+public func add(_ x: FloatList, _ y: FloatList) -> FloatList {
+    return result(from: x) { result in
+        vDSP_vadd(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func subtract(_ x: FloatList, _ y: FloatList) -> FloatList {
+    return result(from: x) { result in
+        vDSP_vsub(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func divide(_ x: FloatList, _ y:FloatList) -> FloatList {
+    return result(from: x) { result in
+        vDSP_vdiv(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: FloatList, _ y: FloatList) -> FloatList {
+    return result(from: x) { result in
+        vDSP_vmul(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func multiply(_ x: FloatList, _ y: Float) -> FloatList {
+    var value = y
+    return result(from: x) { result in
+        vDSP_vsmul(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    }
+}
+
+public func sum(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vDSP_sve(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
 
 public func pow(_ x: FloatList, _ y: FloatList) -> FloatList {
     return result(from: x) { result in
