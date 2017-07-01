@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Accelerate
 
 /// Represents an ordered, fixed sized, reference semantic list of `SignedNumeric` elements that conforms to
 /// `MutableCollection` and `RandomAccessCollection`.
@@ -19,6 +20,14 @@ public struct List<Element: SignedNumeric> {
     }
 
     public let count: Int
+
+    public var countPointer: [Int32] {
+        return [Int32(count)]
+    }
+
+    public var vDSP_Length: vDSP_Length {
+        return UInt(count)
+    }
 
     public init(repeating element: Element, count: Int) {
         self.count = count

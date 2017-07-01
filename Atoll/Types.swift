@@ -10,3 +10,9 @@ import Foundation
 
 public typealias DoubleList = List<Double>
 public typealias FloatList = List<Float>
+
+protocol SupportedFloatType {}
+extension Double: SupportedFloatType {}
+extension Float: SupportedFloatType {}
+
+// sourcery:inline:Operation.stencil

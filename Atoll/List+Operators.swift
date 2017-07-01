@@ -16,55 +16,55 @@ fileprivate func checkCount<T>(lhs: List<T>, rhs: List<T>) {
 public func + (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vaddD(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vaddD(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func + (lhs: FloatList, rhs: FloatList) -> FloatList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vadd(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vadd(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func - (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vsubD(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vsubD(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func - (lhs: FloatList, rhs: FloatList) -> FloatList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vsub(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vsub(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func * (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vmulD(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vmulD(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func * (lhs: FloatList, rhs: FloatList) -> FloatList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vmul(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vmul(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func / (lhs: DoubleList, rhs: DoubleList) -> DoubleList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vdivD(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vdivD(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }
 
 public func / (lhs: FloatList, rhs: FloatList) -> FloatList {
     checkCount(lhs: lhs, rhs: rhs)
     return result(from: lhs) { result in
-        vDSP_vdiv(lhs.pointer, 1, rhs.pointer, 1, result, 1, vDSP_Length(lhs.count))
+        vDSP_vdiv(lhs.pointer, 1, rhs.pointer, 1, result, 1, lhs.vDSP_Length)
     }
 }

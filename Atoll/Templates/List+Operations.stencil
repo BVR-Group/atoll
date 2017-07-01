@@ -33,20 +33,42 @@ public func withUnsafeMutablePointers<T>(
     block(a.pointer, b.pointer, c.pointer)
 }
 
+public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Void) -> T {
+    var result: T = 0
+    block(&result)
+    return result
+}
+
 public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Void) -> List<T> {
     let result = List<T>(count: list.count)
     block(result.pointer)
     return result
 }
 
-public func pow(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
+
+{% for type in types.implementing.SupportedFloatType %}
+public func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
-        vvpow(result, x.pointer, y.pointer, [Int32(x.count)])
+        vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
     }
 }
 
-public func pow(_ x: FloatList, _ y: FloatList) -> FloatList {
+{% endfor %}
+
+{% for type in types.implementing.SupportedFloatType %}
+public func mod(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
-        vvpowf(result, x.pointer, y.pointer, [Int32(x.count)])
+        vvfmod{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
     }
 }
+
+{% endfor %}
+
+{% for type in types.implementing.SupportedFloatType %}
+public func mean(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vDSP_meanv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    }
+}
+
+{% endfor %}
