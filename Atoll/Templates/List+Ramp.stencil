@@ -1,0 +1,24 @@
+///
+///             \    |         | |
+///            _ \   __|  _ \  | |
+///           ___ \  |   (   | | |
+///         _/    _\\__|\___/ _|_|
+///
+///
+///  MIT License | Copyright 2017 BVR, LLC
+
+import Accelerate
+
+{% for type in types.implementing.SupportedFloatType %}
+extension List where Element == {{type.name}} {
+    public init(with range: ClosedRange<{{type.name}}>, by increment: {{type.name}}) {
+        let n = Int(((range.upperBound - range.lowerBound) / increment))
+        var increase = increment
+        var from = range.lowerBound
+        let result = List<Element>(count: n)
+        vDSP_vramp{% if type.name == "Double"%}D{%endif%}(&from, &increase, result.pointer, 1, UInt(n))
+        self = result
+    }
+}
+
+{% endfor %}

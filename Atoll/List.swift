@@ -14,7 +14,7 @@ import Accelerate
 /// `MutableCollection` and `RandomAccessCollection`.
 ///
 public struct List<Element: SignedNumeric> {
-    private var value: UnsafeMutablePointer<Element>
+    internal var value: UnsafeMutablePointer<Element>
 
     public var pointer: UnsafeMutablePointer<Element> {
         return value

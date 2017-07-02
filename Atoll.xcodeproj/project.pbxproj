@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC21F7C71F095375006F014B /* List+Ramp.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C69A81F094F87000477B3 /* List+Ramp.generated.swift */; };
 		FC2E96471EF2DFE9001D5547 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E96461EF2DFE9001D5547 /* List.swift */; };
 		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		FC00D1921F085260000C30E8 /* List+Operators.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "List+Operators.stencil"; sourceTree = "<group>"; };
 		FC2E96461EF2DFE9001D5547 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		FC6C69A61F094EB6000477B3 /* List+Ramp.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "List+Ramp.stencil"; sourceTree = "<group>"; };
+		FC6C69A81F094F87000477B3 /* List+Ramp.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "List+Ramp.generated.swift"; path = "Atoll/List+Ramp.generated.swift"; sourceTree = SOURCE_ROOT; };
 		FC7C8AE31EEF742400CD29D4 /* Atoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7C8AE61EEF742400CD29D4 /* Atoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atoll.h; sourceTree = "<group>"; };
 		FC7C8AE71EEF742400CD29D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 				FC2E96461EF2DFE9001D5547 /* List.swift */,
 				FCB0D9631F06E3D1002D962B /* List+Operations.generated.swift */,
 				FCC800E01F084DCB0031888B /* List+Operators.generated.swift */,
+				FC6C69A81F094F87000477B3 /* List+Ramp.generated.swift */,
 				FCE84D711EF3403A00390C2C /* Types.swift */,
 				FCB0D95D1F06D47F002D962B /* Templates */,
 			);
@@ -106,6 +110,7 @@
 			children = (
 				FC00D1921F085260000C30E8 /* List+Operators.stencil */,
 				FCB0D95E1F06D493002D962B /* List+Operations.stencil */,
+				FC6C69A61F094EB6000477B3 /* List+Ramp.stencil */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC800E21F0850C80031888B /* List+Operators.generated.swift in Sources */,
+				FC21F7C71F095375006F014B /* List+Ramp.generated.swift in Sources */,
 				FCE84D721EF3403A00390C2C /* Types.swift in Sources */,
 				FC2E96471EF2DFE9001D5547 /* List.swift in Sources */,
 				FCB0D9641F06E3D8002D962B /* List+Operations.generated.swift in Sources */,

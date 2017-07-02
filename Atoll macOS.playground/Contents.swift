@@ -14,6 +14,8 @@ import Accelerate
 let listA: DoubleList = [.pi,1,2,3,4,5,6,7,8,9]
 let listB: DoubleList = [.pi,1,2,3,4,5,6,7,8,9]
 let listC: FloatList = [.pi,1,2,3,4,5,6,7,8,9]
+let listD = FloatList(with: 0...1, by: .pi/100)
+listD.count
 
 listA + listB
 listA - listB
