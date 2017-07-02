@@ -107,6 +107,10 @@ public func sum(_ x: {{ type.name }}List) -> {{ type.name }} {
     }
 }
 
+public func innerProduct(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }} {
+    return sum(multiply(x, y))
+}
+
 public func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
     return result(from: x) { result in
         vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)

@@ -109,6 +109,10 @@ public func sum(_ x: DoubleList) -> Double {
     }
 }
 
+public func innerProduct(_ x: DoubleList, _ y: DoubleList) -> Double {
+    return sum(multiply(x, y))
+}
+
 public func pow(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
     return result(from: x) { result in
         vvpow(result, x.pointer, y.pointer, x.countPointer)
@@ -227,6 +231,10 @@ public func sum(_ x: FloatList) -> Float {
     return result(from: x) { result in
         vDSP_sve(x.pointer, 1, result, x.vDSP_Length)
     }
+}
+
+public func innerProduct(_ x: FloatList, _ y: FloatList) -> Float {
+    return sum(multiply(x, y))
 }
 
 public func pow(_ x: FloatList, _ y: FloatList) -> FloatList {
