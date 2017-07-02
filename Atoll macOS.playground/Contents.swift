@@ -1,4 +1,11 @@
-//: Playground - noun: a place where people can play
+///
+///             \    |         | |
+///            _ \   __|  _ \  | |
+///           ___ \  |   (   | | |
+///         _/    _\\__|\___/ _|_|
+///
+///
+///  MIT License | Copyright 2017 BVR, LLC
 
 import AppKit
 import Atoll

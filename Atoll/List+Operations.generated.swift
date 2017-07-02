@@ -1,13 +1,14 @@
 // Generated using Sourcery 0.7.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-//
-//  List+Operations.swift
-//  Atoll
-//
-//  Created by Dylan Wreggelsworth on 6/20/17.
-//  Copyright © 2017 BVR, LLC. All rights reserved.
-//
+///
+///             \    |         | |
+///            _ \   __|  _ \  | |
+///           ___ \  |   (   | | |
+///         _/    _\\__|\___/ _|_|
+///
+///
+///  MIT License | Copyright 2017 BVR, LLC
 
 import Foundation
 import Accelerate

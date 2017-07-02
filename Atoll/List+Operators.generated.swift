@@ -1,6 +1,15 @@
 // Generated using Sourcery 0.7.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
+///
+///             \    |         | |
+///            _ \   __|  _ \  | |
+///           ___ \  |   (   | | |
+///         _/    _\\__|\___/ _|_|
+///
+///
+///  MIT License | Copyright 2017 BVR, LLC
+
 fileprivate func checkCount<T>(lhs: List<T>, rhs: List<T>) {
     precondition(lhs.count == rhs.count, "Expected Lists of equal length.")
 }

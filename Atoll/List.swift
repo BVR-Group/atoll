@@ -1,10 +1,11 @@
-//
-//  List.swift
-//  Atoll-macOS
-//
-//  Created by Dylan Wreggelsworth on 6/15/17.
-//  Copyright © 2017 BVR, LLC. All rights reserved.
-//
+///
+///             \    |         | |
+///            _ \   __|  _ \  | |
+///           ___ \  |   (   | | |
+///         _/    _\\__|\___/ _|_|
+///
+///
+///  MIT License | Copyright 2017 BVR, LLC
 
 import Foundation
 import Accelerate
