@@ -9,7 +9,7 @@
 
 import Accelerate
 
-{% for type in types.implementing.SupportedFloatType %}
+{% for type in types.implementing.Real %}
 extension List where Element == {{type.name}} {
     public init(with range: ClosedRange<{{type.name}}>, by increment: {{type.name}}) {
         let n = Int(((range.upperBound - range.lowerBound) / increment))

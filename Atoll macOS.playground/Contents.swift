@@ -24,6 +24,7 @@ listA / listB
 
 pow(listA, listB)
 
+
 withUnsafeMutablePointers(to: listA, and: listB) { (a, b) in
     print(a, b)
 }
@@ -44,3 +45,4 @@ log(listC)
 log(listD)
 listA + .pi
 listA * 2
+

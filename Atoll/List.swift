@@ -13,7 +13,7 @@ import Accelerate
 /// Represents an ordered, fixed sized, reference semantic list of `SignedNumeric` elements that conforms to
 /// `MutableCollection` and `RandomAccessCollection`.
 ///
-public struct List<Element: SignedNumeric> {
+public struct List<Element: Real> {
     internal var value: UnsafeMutablePointer<Element>
 
     public var pointer: UnsafeMutablePointer<Element> {
@@ -88,4 +88,3 @@ extension List: CustomDebugStringConvertible {
         return self.map({ $0 }).debugDescription
     }
 }
-

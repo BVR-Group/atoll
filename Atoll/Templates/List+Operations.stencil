@@ -45,135 +45,147 @@ public func result<T>(from list: List<T>, block: (UnsafeMutablePointer<T>) -> Vo
     block(result.pointer)
     return result
 }
-{% for type in types.implementing.SupportedFloatType %}
 
-// {{ type.name }}s
+{% for type in types.implementing.Real %}
 
-public func add(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vDSP_vadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+extension {{ type.name }} {
+    public static func add(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vDSP_vadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func add(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
-    var value = y
-    return result(from: x) { result in
-        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    public static func add(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
+        var value = y
+        return result(from: x) { result in
+            vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func subtract(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    public static func subtract(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func subtract(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
-    var value = -y
-    return result(from: x) { result in
-        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    public static func subtract(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
+        var value = -y
+        return result(from: x) { result in
+            vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vDSP_vdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    public static func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vDSP_vdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
-    var value = y
-    return result(from: x) { result in
-        vDSP_vsdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    public static func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}) -> {{ type.name }}List {
+        var value = y
+        return result(from: x) { result in
+            vDSP_vsdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vDSP_vmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+    public static func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vDSP_vmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
-    var value = y
-    return result(from: x) { result in
-        vDSP_vsmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+    public static func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}) -> {{ type.name }}List {
+        var value = y
+        return result(from: x) { result in
+            vDSP_vsmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func sum(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_sve{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func sum(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_sve{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func innerProduct(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }} {
-    return sum(multiply(x, y))
-}
-
-public func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
+    public static func pow(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
+        }
     }
-}
 
-public func sqrt(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vvsqrt{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+    public static func sqrt(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vvsqrt{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+        }
     }
-}
 
-public func mod(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vvfmod{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
+    public static func mod(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vvfmod{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
+        }
     }
-}
 
-public func rootMeanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_rmsqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func rootMeanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_rmsqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func meanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_measqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func meanSquare(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_measqv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func mean(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_meanv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func mean(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_meanv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func meanMagnitude(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_meamgv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func meanMagnitude(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_meamgv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func min(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_minv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func min(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_minv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func max(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vDSP_maxv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+    public static func max(_ x: {{ type.name }}List) -> {{ type.name }} {
+        return result(from: x) { result in
+            vDSP_maxv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
+        }
     }
-}
 
-public func abs(_ x: {{ type.name }}List) -> {{ type.name }}List {
-    return result(from: x) { result in
-        vDSP_vabs{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, 1, x.vDSP_Length)
+    public static func abs(_ x: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vDSP_vabs{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, 1, x.vDSP_Length)
+        }
     }
-}
 
-public func log(_ x: {{ type.name }}List) -> {{ type.name }} {
-    return result(from: x) { result in
-        vvlog{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+    public static func log(_ x: {{ type.name }}List) -> {{ type.name}}List {
+        return result(from: x) { result in
+            vvlog{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+        }
+    }
+
+    public static func innerProduct(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }} {
+        return sum(multiply(x, y))
     }
 }
 {% endfor %}
+
+{% for type in types.based.Real %}{%if type.name == "Double" %}
+{% for method in type.allMethods %}
+
+public func {{method.shortName}}<T>({% for parameter in method.parameters %}_ {{parameter.name}}: {%if parameter.typeName.name == 'List<Self>' %}List<T>{%else%}T{{parameter.type}}{%endif%}{% if not forloop.last %}, {% endif %}{% endfor %}) -> {% if method.returnTypeName.name == "Self" %}T{%else%}List<T>{%endif%} {
+    return T.{{method.shortName}}({% for parameter in method.parameters %}{{parameter.name}}{% if not forloop.last %}, {% endif %}{% endfor %})
+}
+{% endfor %}
+{%endif%}{% endfor %}
+
+

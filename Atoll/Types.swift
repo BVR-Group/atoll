@@ -12,6 +12,29 @@ import Foundation
 public typealias DoubleList = List<Double>
 public typealias FloatList = List<Float>
 
-protocol SupportedFloatType {}
-extension Double: SupportedFloatType {}
-extension Float: SupportedFloatType {}
+public protocol Real: SignedNumeric {
+    static func add(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func add(_ x: List<Self>, _ y: Self) -> List<Self>
+    static func subtract(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func subtract(_ x: List<Self>, _ y: Self) -> List<Self>
+    static func divide(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func divide(_ x: List<Self>, _ y: Self) -> List<Self>
+    static func multiply(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func multiply(_ x: List<Self>, _ y: Self) -> List<Self>
+    static func sum(_ x: List<Self>) -> Self
+    static func pow(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func sqrt(_ x: List<Self>) -> Self
+    static func mod(_ x: List<Self>, _ y: List<Self>) -> List<Self>
+    static func rootMeanSquare(_ x: List<Self>) -> Self
+    static func meanSquare(_ x: List<Self>) -> Self
+    static func mean(_ x: List<Self>) -> Self
+    static func meanMagnitude(_ x: List<Self>) -> Self
+    static func min(_ x: List<Self>) -> Self
+    static func max(_ x: List<Self>) -> Self
+    static func abs(_ x: List<Self>) -> List<Self>
+    static func log(_ x: List<Self>) -> List<Self>
+    static func innerProduct(_ x: List<Self>, _ y: List<Self>) -> Self
+}
+
+extension Double: Real {}
+extension Float: Real {}
