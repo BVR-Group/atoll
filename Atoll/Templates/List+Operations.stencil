@@ -170,4 +170,10 @@ public func abs(_ x: {{ type.name }}List) -> {{ type.name }}List {
         vDSP_vabs{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, 1, x.vDSP_Length)
     }
 }
+
+public func log(_ x: {{ type.name }}List) -> {{ type.name }} {
+    return result(from: x) { result in
+        vvlog{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+    }
+}
 {% endfor %}

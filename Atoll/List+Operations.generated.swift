@@ -173,6 +173,12 @@ public func abs(_ x: DoubleList) -> DoubleList {
     }
 }
 
+public func log(_ x: DoubleList) -> Double {
+    return result(from: x) { result in
+        vvlog(result, x.pointer, x.countPointer)
+    }
+}
+
 // Floats
 
 public func add(_ x: FloatList, _ y: FloatList) -> FloatList {
@@ -294,5 +300,11 @@ public func max(_ x: FloatList) -> Float {
 public func abs(_ x: FloatList) -> FloatList {
     return result(from: x) { result in
         vDSP_vabs(x.pointer, 1, result, 1, x.vDSP_Length)
+    }
+}
+
+public func log(_ x: FloatList) -> Float {
+    return result(from: x) { result in
+        vvlogf(result, x.pointer, x.countPointer)
     }
 }
