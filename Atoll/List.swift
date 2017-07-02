@@ -40,6 +40,10 @@ public struct List<Element: SignedNumeric> {
         self.init(repeating: 0, count: count)
     }
 
+    public init(ones count: Int) {
+        self.init(repeating: 1, count: count)
+    }
+
     public func copy() -> List<Element> {
         let result = List<Element>.init(repeating: 0, count: count)
         result.value.assign(from: value, count: count)
