@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC21F7C71F095375006F014B /* List+Ramp.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6C69A81F094F87000477B3 /* List+Ramp.generated.swift */; };
+		FC21F7CA1F0960B7006F014B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC21F7C91F0960AB006F014B /* Accelerate.framework */; };
 		FC2E96471EF2DFE9001D5547 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E96461EF2DFE9001D5547 /* List.swift */; };
 		FC7C8AED1EEF742400CD29D4 /* Atoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7C8AE31EEF742400CD29D4 /* Atoll.framework */; };
 		FC7C8AF21EEF742400CD29D4 /* AtollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7C8AF11EEF742400CD29D4 /* AtollTests.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		FC00D1921F085260000C30E8 /* List+Operators.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "List+Operators.stencil"; sourceTree = "<group>"; };
+		FC21F7C91F0960AB006F014B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FC2E96461EF2DFE9001D5547 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		FC6C69A61F094EB6000477B3 /* List+Ramp.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "List+Ramp.stencil"; sourceTree = "<group>"; };
 		FC6C69A81F094F87000477B3 /* List+Ramp.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "List+Ramp.generated.swift"; path = "Atoll/List+Ramp.generated.swift"; sourceTree = SOURCE_ROOT; };
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC21F7CA1F0960B7006F014B /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,12 +66,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC21F7C81F0960AB006F014B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC21F7C91F0960AB006F014B /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FC7C8AD91EEF742400CD29D4 = {
 			isa = PBXGroup;
 			children = (
 				FC7C8AE51EEF742400CD29D4 /* Atoll */,
 				FC7C8AF01EEF742400CD29D4 /* AtollTests */,
 				FC7C8AE41EEF742400CD29D4 /* Products */,
+				FC21F7C81F0960AB006F014B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
