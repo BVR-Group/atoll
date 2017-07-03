@@ -11,7 +11,7 @@ import AppKit
 import Atoll
 import Accelerate
 
-let listA: DoubleList = [0,1,2,3,4,5,6,7,8,9]
+let listA: DoubleList = [0,1,2,3,4,5,6,7,8]
 let listB: DoubleList = [0,1,2,3,4,5,6,7,8,9]
 let listC: FloatList = [0,1,2,3,4,5,6,7,8,9]
 let listD = FloatList(with: 0...1, by: .pi/100)
@@ -23,11 +23,6 @@ listA * listB
 listA / listB
 
 pow(listA, listB)
-
-
-withUnsafeMutablePointers(to: listA, and: listB) { (a, b) in
-    print(a, b)
-}
 
 mod(listA, listB)
 mean(listA)
@@ -46,3 +41,8 @@ log(listD)
 listA + .pi
 listA * 2
 
+
+
+//dump(listA)
+let newList = listA.mirrored()
+dump(newList)

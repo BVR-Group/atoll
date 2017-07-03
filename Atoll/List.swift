@@ -49,6 +49,21 @@ public struct List<Element: Real> {
         result.value.assign(from: value, count: count)
         return result
     }
+
+    public var halfIndex: List.Index {
+        return self.endIndex / 2
+    }
+
+    public var firstHalf: MutableRandomAccessSlice<List<Element>> {
+        return self[startIndex..<halfIndex]
+    }
+
+    public func mirrored() -> List<Element> {
+        let result = self.copy()
+        let range: Range<List.Index> = self.endIndex % 2 == 0 ? self.halfIndex..<endIndex : self.halfIndex + 1..<endIndex
+        result.replaceSubrange(range, with: firstHalf.reversed())
+        return result
+    }
 }
 
 extension List: ExpressibleByArrayLiteral {
@@ -62,7 +77,20 @@ extension List: ExpressibleByArrayLiteral {
     }
 }
 
-extension List: MutableCollection, RandomAccessCollection {
+extension List: MutableCollection, RandomAccessCollection, RangeReplaceableCollection {
+
+    public init() {
+        self.init(count: 0)
+    }
+
+    public func replaceSubrange<C: Collection>(
+        _ subrange: Range<Index>,
+        with newElements: C
+    ) where C.Iterator.Element == Element {
+        assert(subrange.lowerBound >= startIndex && subrange.upperBound <= endIndex)
+        _ = UnsafeMutableBufferPointer(start: value + subrange.lowerBound, count: count - subrange.lowerBound).initialize(from: newElements)
+    }
+
     public typealias Index = Int
 
     public subscript(index: Index) -> Element {

@@ -3,7 +3,12 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/dylan/github/Atoll/Atoll%20macOS.playground#CharacterRangeLen=217&amp;CharacterRangeLoc=240&amp;EndingColumnNumber=3&amp;EndingLineNumber=20&amp;StartingColumnNumber=17&amp;StartingLineNumber=11&amp;Timestamp=520729829.127239"
+         documentLocation = "file:///Users/dylan/github/Atoll/Atoll%20macOS.playground#CharacterRangeLen=216&amp;CharacterRangeLoc=240&amp;EndingColumnNumber=4&amp;EndingLineNumber=20&amp;StartingColumnNumber=17&amp;StartingLineNumber=11&amp;Timestamp=520790783.984711"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/dylan/github/Atoll/Atoll%20macOS.playground#CharacterRangeLen=49&amp;CharacterRangeLoc=747&amp;EndingColumnNumber=9&amp;EndingLineNumber=47&amp;StartingColumnNumber=5&amp;StartingLineNumber=45&amp;Timestamp=520790783.984829"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
