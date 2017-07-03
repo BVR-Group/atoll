@@ -45,7 +45,9 @@ listA += listB
 listA *= .epsilon
 listA
 
-Double.leastNonzeroMagnitude
+dump(exp(listA))
+exp(listA[5]) == exp(listA)[5]
+
 
 
 //dump(listA)

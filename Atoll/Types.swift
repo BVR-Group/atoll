@@ -40,6 +40,8 @@ public protocol Real: SignedNumeric {
     static func pow(_ x: List<Self>, _ y: List<Self>) -> List<Self>
 //    static func powInPlace(_ x: List<Self>, _ y: List<Self>)
 
+    static func exp(_ x: List<Self>) -> List<Self>
+
     // static func sqrt(_ x: List<Self>) -> List<Self>
     static func sqrt(_ x: List<Self>) -> Self
 //    static func sqrtInPlace(_ x: List<Self>)

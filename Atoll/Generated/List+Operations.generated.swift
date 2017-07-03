@@ -151,6 +151,12 @@ extension Double {
         }
     }
 
+    public static func exp(_ x: DoubleList) -> DoubleList {
+        return result(from: x) { result in
+            vvexp(result, x.pointer, x.countPointer)
+        }
+    }
+
     public static func powInPlace(_ x: DoubleList, _ y: DoubleList) {
         vvpow(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
@@ -321,6 +327,12 @@ extension Float {
         }
     }
 
+    public static func exp(_ x: FloatList) -> FloatList {
+        return result(from: x) { result in
+            vvexpf(result, x.pointer, x.countPointer)
+        }
+    }
+
     public static func powInPlace(_ x: FloatList, _ y: FloatList) {
         vvpowf(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
@@ -461,6 +473,10 @@ public func sum<T>(_ x: List<T>) -> T {
 
 public func pow<T>(_ x: List<T>, _ y: List<T>) -> List<T> {
     return T.pow(x, y)
+}
+
+public func exp<T>(_ x: List<T>) -> List<T> {
+    return T.exp(x)
 }
 
 public func sqrt<T>(_ x: List<T>) -> T {

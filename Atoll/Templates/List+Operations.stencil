@@ -149,6 +149,12 @@ extension {{ type.name }} {
         }
     }
 
+    public static func exp(_ x: {{ type.name }}List) -> {{ type.name }}List {
+        return result(from: x) { result in
+            vvexp{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
+        }
+    }
+
     public static func powInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
         vvpow{% if type.name == "Float" %}f{% endif %}(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
