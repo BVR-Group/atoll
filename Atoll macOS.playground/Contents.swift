@@ -41,6 +41,11 @@ log(listD)
 listA + .pi
 listA * 2
 
+listA += listB
+listA *= .epsilon
+listA
+
+Double.leastNonzeroMagnitude
 
 
 //dump(listA)

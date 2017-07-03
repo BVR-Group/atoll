@@ -62,6 +62,15 @@ extension {{ type.name }} {
         }
     }
 
+    public static func addInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
+        vDSP_vadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func addInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}) {
+        var value = y
+        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func subtract(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
         return result(from: x) { result in
             vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -73,6 +82,15 @@ extension {{ type.name }} {
         return result(from: x) { result in
             vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, result, 1, x.vDSP_Length)
         }
+    }
+
+    public static func subtractInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
+        vDSP_vsub{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func subtractInPlace(_ x: {{ type.name }}List, _ y:{{ type.name }}) {
+        var value = -y
+        vDSP_vsadd{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
     }
 
     public static func divide(_ x: {{ type.name }}List, _ y:{{ type.name }}List) -> {{ type.name }}List {
@@ -88,6 +106,15 @@ extension {{ type.name }} {
         }
     }
 
+    public static func divideInPlace(_ x: {{ type.name }}List, _ y:{{ type.name }}List) {
+        vDSP_vdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func divideInPlace(_ x: {{ type.name }}List, _ y:{{ type.name }}) {
+        var value = y
+        vDSP_vsdiv{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func multiply(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {
         return result(from: x) { result in
             vDSP_vmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -101,6 +128,15 @@ extension {{ type.name }} {
         }
     }
 
+    public static func multiplyInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
+        vDSP_vmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func multiplyInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}) {
+        var value = y
+        vDSP_vsmul{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func sum(_ x: {{ type.name }}List) -> {{ type.name }} {
         return result(from: x) { result in
             vDSP_sve{% if type.name == "Double" %}D{% endif %}(x.pointer, 1, result, x.vDSP_Length)
@@ -111,6 +147,10 @@ extension {{ type.name }} {
         return result(from: x) { result in
             vvpow{% if type.name == "Float" %}f{% endif %}(result, x.pointer, y.pointer, x.countPointer)
         }
+    }
+
+    public static func powInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
+        vvpow{% if type.name == "Float" %}f{% endif %}(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
 
     public static func sqrt(_ x: {{ type.name }}List) -> {{ type.name }} {
@@ -182,8 +222,8 @@ extension {{ type.name }} {
 {% for type in types.based.Real %}{%if type.name == "Double" %}
 {% for method in type.allMethods %}
 
-public func {{method.shortName}}<T>({% for parameter in method.parameters %}_ {{parameter.name}}: {%if parameter.typeName.name == 'List<Self>' %}List<T>{%else%}T{{parameter.type}}{%endif%}{% if not forloop.last %}, {% endif %}{% endfor %}) -> {% if method.returnTypeName.name == "Self" %}T{%else%}List<T>{%endif%} {
-    return T.{{method.shortName}}({% for parameter in method.parameters %}{{parameter.name}}{% if not forloop.last %}, {% endif %}{% endfor %})
+public func {{method.shortName}}<T>({% for parameter in method.parameters %}_ {{parameter.name}}: {%if parameter.typeName.name == 'List<Self>' %}List<T>{%else%}T{{parameter.type}}{%endif%}{% if not forloop.last %}, {% endif %}{% endfor %}){% if method.returnTypeName.name != "Void" %} -> {% if method.returnTypeName.name == "Self" %}T{%else%}List<T>{%endif%}{% endif %} {
+    {% if method.returnTypeName.name != "Void" %}return {%endif%}T.{{method.shortName}}({% for parameter in method.parameters %}{{parameter.name}}{% if not forloop.last %}, {% endif %}{% endfor %})
 }
 {% endfor %}
 {%endif%}{% endfor %}

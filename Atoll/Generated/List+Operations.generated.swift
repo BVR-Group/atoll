@@ -64,6 +64,15 @@ extension Double {
         }
     }
 
+    public static func addInPlace(_ x: DoubleList, _ y: DoubleList) {
+        vDSP_vaddD(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func addInPlace(_ x: DoubleList, _ y: Double) {
+        var value = y
+        vDSP_vsaddD(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func subtract(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
         return result(from: x) { result in
             vDSP_vsubD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -75,6 +84,15 @@ extension Double {
         return result(from: x) { result in
             vDSP_vsaddD(x.pointer, 1, &value, result, 1, x.vDSP_Length)
         }
+    }
+
+    public static func subtractInPlace(_ x: DoubleList, _ y: DoubleList) {
+        vDSP_vsubD(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func subtractInPlace(_ x: DoubleList, _ y:Double) {
+        var value = -y
+        vDSP_vsaddD(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
     }
 
     public static func divide(_ x: DoubleList, _ y:DoubleList) -> DoubleList {
@@ -90,6 +108,15 @@ extension Double {
         }
     }
 
+    public static func divideInPlace(_ x: DoubleList, _ y:DoubleList) {
+        vDSP_vdivD(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func divideInPlace(_ x: DoubleList, _ y:Double) {
+        var value = y
+        vDSP_vsdivD(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func multiply(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
         return result(from: x) { result in
             vDSP_vmulD(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -103,6 +130,15 @@ extension Double {
         }
     }
 
+    public static func multiplyInPlace(_ x: DoubleList, _ y: DoubleList) {
+        vDSP_vmulD(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func multiplyInPlace(_ x: DoubleList, _ y: Double) {
+        var value = y
+        vDSP_vsmulD(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func sum(_ x: DoubleList) -> Double {
         return result(from: x) { result in
             vDSP_sveD(x.pointer, 1, result, x.vDSP_Length)
@@ -113,6 +149,10 @@ extension Double {
         return result(from: x) { result in
             vvpow(result, x.pointer, y.pointer, x.countPointer)
         }
+    }
+
+    public static func powInPlace(_ x: DoubleList, _ y: DoubleList) {
+        vvpow(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
 
     public static func sqrt(_ x: DoubleList) -> Double {
@@ -194,6 +234,15 @@ extension Float {
         }
     }
 
+    public static func addInPlace(_ x: FloatList, _ y: FloatList) {
+        vDSP_vadd(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func addInPlace(_ x: FloatList, _ y: Float) {
+        var value = y
+        vDSP_vsadd(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func subtract(_ x: FloatList, _ y: FloatList) -> FloatList {
         return result(from: x) { result in
             vDSP_vsub(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -205,6 +254,15 @@ extension Float {
         return result(from: x) { result in
             vDSP_vsadd(x.pointer, 1, &value, result, 1, x.vDSP_Length)
         }
+    }
+
+    public static func subtractInPlace(_ x: FloatList, _ y: FloatList) {
+        vDSP_vsub(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func subtractInPlace(_ x: FloatList, _ y:Float) {
+        var value = -y
+        vDSP_vsadd(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
     }
 
     public static func divide(_ x: FloatList, _ y:FloatList) -> FloatList {
@@ -220,6 +278,15 @@ extension Float {
         }
     }
 
+    public static func divideInPlace(_ x: FloatList, _ y:FloatList) {
+        vDSP_vdiv(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func divideInPlace(_ x: FloatList, _ y:Float) {
+        var value = y
+        vDSP_vsdiv(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func multiply(_ x: FloatList, _ y: FloatList) -> FloatList {
         return result(from: x) { result in
             vDSP_vmul(x.pointer, 1, y.pointer, 1, result, 1, x.vDSP_Length)
@@ -233,6 +300,15 @@ extension Float {
         }
     }
 
+    public static func multiplyInPlace(_ x: FloatList, _ y: FloatList) {
+        vDSP_vmul(x.pointer, 1, y.pointer, 1, x.pointer, 1, x.vDSP_Length)
+    }
+
+    public static func multiplyInPlace(_ x: FloatList, _ y: Float) {
+        var value = y
+        vDSP_vsmul(x.pointer, 1, &value, x.pointer, 1, x.vDSP_Length)
+    }
+
     public static func sum(_ x: FloatList) -> Float {
         return result(from: x) { result in
             vDSP_sve(x.pointer, 1, result, x.vDSP_Length)
@@ -243,6 +319,10 @@ extension Float {
         return result(from: x) { result in
             vvpowf(result, x.pointer, y.pointer, x.countPointer)
         }
+    }
+
+    public static func powInPlace(_ x: FloatList, _ y: FloatList) {
+        vvpowf(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
 
     public static func sqrt(_ x: FloatList) -> Float {
@@ -319,12 +399,28 @@ public func add<T>(_ x: List<T>, _ y: T) -> List<T> {
     return T.add(x, y)
 }
 
+public func addInPlace<T>(_ x: List<T>, _ y: List<T>) {
+    T.addInPlace(x, y)
+}
+
+public func addInPlace<T>(_ x: List<T>, _ y: T) {
+    T.addInPlace(x, y)
+}
+
 public func subtract<T>(_ x: List<T>, _ y: List<T>) -> List<T> {
     return T.subtract(x, y)
 }
 
 public func subtract<T>(_ x: List<T>, _ y: T) -> List<T> {
     return T.subtract(x, y)
+}
+
+public func subtractInPlace<T>(_ x: List<T>, _ y: List<T>) {
+    T.subtractInPlace(x, y)
+}
+
+public func subtractInPlace<T>(_ x: List<T>, _ y: T) {
+    T.subtractInPlace(x, y)
 }
 
 public func divide<T>(_ x: List<T>, _ y: List<T>) -> List<T> {
@@ -335,12 +431,28 @@ public func divide<T>(_ x: List<T>, _ y: T) -> List<T> {
     return T.divide(x, y)
 }
 
+public func divideInPlace<T>(_ x: List<T>, _ y: List<T>) {
+    T.divideInPlace(x, y)
+}
+
+public func divideInPlace<T>(_ x: List<T>, _ y: T) {
+    T.divideInPlace(x, y)
+}
+
 public func multiply<T>(_ x: List<T>, _ y: List<T>) -> List<T> {
     return T.multiply(x, y)
 }
 
 public func multiply<T>(_ x: List<T>, _ y: T) -> List<T> {
     return T.multiply(x, y)
+}
+
+public func multiplyInPlace<T>(_ x: List<T>, _ y: List<T>) {
+    T.multiplyInPlace(x, y)
+}
+
+public func multiplyInPlace<T>(_ x: List<T>, _ y: T) {
+    T.multiplyInPlace(x, y)
 }
 
 public func sum<T>(_ x: List<T>) -> T {

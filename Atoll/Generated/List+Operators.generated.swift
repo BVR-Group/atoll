@@ -46,4 +46,36 @@ extension List {
     public static func / (lhs: List<Element>, rhs: List.Element) -> List<Element> {
         return Element.divide(lhs, rhs)
     }
+
+    public static func += (lhs: List<Element>, rhs: List<Element>) {
+        Element.addInPlace(lhs, rhs)
+    }
+
+    public static func += (lhs: List<Element>, rhs: List.Element) {
+        Element.addInPlace(lhs, rhs)
+    }
+
+    public static func -= (lhs: List<Element>, rhs: List<Element>) {
+        Element.subtractInPlace(lhs, rhs)
+    }
+
+    public static func -= (lhs: List<Element>, rhs: List.Element) {
+        Element.subtractInPlace(lhs, rhs)
+    }
+
+    public static func *= (lhs: List<Element>, rhs: List<Element>) {
+        Element.multiplyInPlace(lhs, rhs)
+    }
+
+    public static func *= (lhs: List<Element>, rhs: List.Element) {
+        Element.multiplyInPlace(lhs, rhs)
+    }
+
+    public static func /= (lhs: List<Element>, rhs: List<Element>) {
+        Element.divideInPlace(lhs, rhs)
+    }
+
+    public static func /= (lhs: List<Element>, rhs: List.Element) {
+        Element.divideInPlace(lhs, rhs)
+    }
 }
