@@ -30,6 +30,15 @@ public struct List<Element: Real> {
         return UInt(count)
     }
 
+
+    public var halfIndex: List.Index {
+        return self.endIndex / 2
+    }
+
+    public var firstHalf: MutableRandomAccessSlice<List<Element>> {
+        return self[startIndex..<halfIndex]
+    }
+
     public init(repeating element: Element, count: Int) {
         self.count = count
         self.value = UnsafeMutablePointer<Element>.allocate(capacity: count)
@@ -50,14 +59,7 @@ public struct List<Element: Real> {
         return result
     }
 
-    public var halfIndex: List.Index {
-        return self.endIndex / 2
-    }
-
-    public var firstHalf: MutableRandomAccessSlice<List<Element>> {
-        return self[startIndex..<halfIndex]
-    }
-
+    /// Takes the first half of the list, reverses it, and replaces the later half with the resulting values.
     public func mirrored() -> List<Element> {
         let result = self.copy()
         let range: Range<List.Index> = self.endIndex % 2 == 0 ? self.halfIndex..<endIndex : self.halfIndex + 1..<endIndex
