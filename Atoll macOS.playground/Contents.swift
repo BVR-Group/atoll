@@ -53,3 +53,6 @@ exp(listA[5]) == exp(listA)[5]
 //dump(listA)
 let newList = listA.mirrored()
 dump(newList)
+dump(listB)
+listB.mirror()
+dump(listB)

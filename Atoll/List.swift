@@ -30,7 +30,6 @@ public struct List<Element: Real> {
         return UInt(count)
     }
 
-
     public var halfIndex: List.Index {
         return self.endIndex / 2
     }
@@ -61,10 +60,14 @@ public struct List<Element: Real> {
 
     /// Takes the first half of the list, reverses it, and replaces the later half with the resulting values.
     public func mirrored() -> List<Element> {
-        let result = self.copy()
-        let range: Range<List.Index> = self.endIndex % 2 == 0 ? self.halfIndex..<endIndex : self.halfIndex + 1..<endIndex
-        result.replaceSubrange(range, with: firstHalf.reversed())
+        var result = self.copy()
+        result.mirror()
         return result
+    }
+    /// Takes the first half of the list, reverses it, and replaces the later half with the resulting values.
+    public mutating func mirror() {
+        let range: Range<List.Index> = self.endIndex % 2 == 0 ? self.halfIndex..<endIndex : self.halfIndex + 1..<endIndex
+        self.replaceSubrange(range, with: firstHalf.reversed())
     }
 }
 
@@ -85,7 +88,7 @@ extension List: MutableCollection, RandomAccessCollection, RangeReplaceableColle
         self.init(count: 0)
     }
 
-    public func replaceSubrange<C: Collection>(
+    public mutating func replaceSubrange<C: Collection>(
         _ subrange: Range<Index>,
         with newElements: C
     ) where C.Iterator.Element == Element {
