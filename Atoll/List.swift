@@ -64,6 +64,7 @@ public struct List<Element: Real> {
         result.mirror()
         return result
     }
+    
     /// Takes the first half of the list, reverses it, and replaces the later half with the resulting values.
     public mutating func mirror() {
         let range: Range<List.Index> = self.endIndex % 2 == 0 ? self.halfIndex..<endIndex : self.halfIndex + 1..<endIndex
