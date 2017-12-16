@@ -8,6 +8,7 @@
 ///  MIT License | Copyright 2017 BVR, LLC
 
 import Accelerate
+import simd
 
 {% for type in types.implementing.Real %}
 extension List where Element == {{type.name}} {

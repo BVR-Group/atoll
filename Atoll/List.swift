@@ -9,6 +9,7 @@
 
 import Foundation
 import Accelerate
+import simd
 
 /// Represents an ordered, fixed sized, reference semantic list of `SignedNumeric` elements that conforms to
 /// `MutableCollection` and `RandomAccessCollection`.

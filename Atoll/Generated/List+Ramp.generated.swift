@@ -11,6 +11,7 @@
 ///  MIT License | Copyright 2017 BVR, LLC
 
 import Accelerate
+import simd
 
 extension List where Element == Double {
     public init(with range: ClosedRange<Double>, by increment: Double) {

@@ -12,6 +12,7 @@
 
 import Foundation
 import Accelerate
+import simd
 
 public func withUnsafeMutablePointer<T>(
     to a: List<T>,
