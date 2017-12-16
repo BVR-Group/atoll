@@ -153,6 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC7C8AF71EEF742400CD29D4 /* Build configuration list for PBXNativeTarget "Atoll-macOS" */;
 			buildPhases = (
+				FCFC3BA11FE5DE1A007B53E7 /* Sourcery */,
 				FC7C8ADE1EEF742400CD29D4 /* Sources */,
 				FC7C8ADF1EEF742400CD29D4 /* Frameworks */,
 				FC7C8AE01EEF742400CD29D4 /* Headers */,
@@ -192,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "BVR, LLC";
 				TargetAttributes = {
 					FC7C8AE21EEF742400CD29D4 = {
@@ -238,6 +239,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FCFC3BA11FE5DE1A007B53E7 /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sourcery --sources ${SOURCE_ROOT}/Atoll --templates ${SOURCE_ROOT}/Atoll/Templates --output ${SOURCE_ROOT}/Atoll/Generated";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FC7C8ADE1EEF742400CD29D4 /* Sources */ = {
@@ -291,6 +309,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -350,6 +370,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;

@@ -12,7 +12,7 @@ import Atoll
 import Accelerate
 
 let listA: DoubleList = [0,1,2,3,4,5,6,7,8]
-let listB: DoubleList = [0,1,2,3,4,5,6,7,8,9]
+var listB: DoubleList = [0,1,2,3,4,5,6,7,8,9]
 let listC: FloatList = [0,1,2,3,4,5,6,7,8,9]
 let listD = FloatList(with: 0...1, by: .pi/100)
 listD.count
@@ -56,3 +56,5 @@ dump(newList)
 dump(listB)
 listB.mirror()
 dump(listB)
+
+
