@@ -42,9 +42,9 @@ public protocol Real: SignedNumeric {
 
     static func exp(_ x: List<Self>) -> List<Self>
 
-    // static func sqrt(_ x: List<Self>) -> List<Self>
-    static func sqrt(_ x: List<Self>) -> Self
-//    static func sqrtInPlace(_ x: List<Self>)
+    static func sqrt(_ x: List<Self>) -> List<Self>
+//    static func sqrt(_ x: List<Self>) -> Self
+    static func sqrtInPlace(_ x: List<Self>)
 
     static func mod(_ x: List<Self>, _ y: List<Self>) -> List<Self>
     // static func mod(_ x: List<Self>, _ y: Self) -> List<Self>

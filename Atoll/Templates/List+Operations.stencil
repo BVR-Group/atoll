@@ -159,11 +159,15 @@ extension {{ type.name }} {
     public static func powInPlace(_ x: {{ type.name }}List, _ y: {{ type.name }}List) {
         vvpow{% if type.name == "Float" %}f{% endif %}(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
-
-    public static func sqrt(_ x: {{ type.name }}List) -> {{ type.name }} {
+    
+    public static func sqrt(_ x: {{ type.name }}List) -> {{ type.name }}List {
         return result(from: x) { result in
             vvsqrt{% if type.name == "Float" %}f{% endif %}(result, x.pointer, x.countPointer)
         }
+    }
+    
+    public static func sqrtInPlace(_ x: {{ type.name }}List) {
+        vvsqrt{% if type.name == "Float" %}f{% endif %}(x.pointer, x.pointer, x.countPointer)
     }
 
     public static func mod(_ x: {{ type.name }}List, _ y: {{ type.name }}List) -> {{ type.name }}List {

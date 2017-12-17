@@ -23,13 +23,19 @@ listA * listB
 listA / listB
 
 pow(listA, listB)
-
 mod(listA, listB)
 mean(listA)
 mean(listC)
 rootMeanSquare(listA)
 meanSquare(listA)
+
 sqrt(listA)
+
+var testList: DoubleList = [0,1,2,3,4,5,6,7,8]
+sqrtInPlace(testList)
+testList
+
+
 sum(listA)
 sum(listC)
 

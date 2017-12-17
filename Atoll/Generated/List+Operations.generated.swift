@@ -161,11 +161,13 @@ extension Double {
     public static func powInPlace(_ x: DoubleList, _ y: DoubleList) {
         vvpow(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
-
-    public static func sqrt(_ x: DoubleList) -> Double {
+    public static func sqrt(_ x: DoubleList) -> DoubleList {
         return result(from: x) { result in
             vvsqrt(result, x.pointer, x.countPointer)
         }
+    }
+    public static func sqrtInPlace(_ x: DoubleList) {
+        vvsqrt(x.pointer, x.pointer, x.countPointer)
     }
 
     public static func mod(_ x: DoubleList, _ y: DoubleList) -> DoubleList {
@@ -337,11 +339,13 @@ extension Float {
     public static func powInPlace(_ x: FloatList, _ y: FloatList) {
         vvpowf(x.pointer, x.pointer, y.pointer, x.countPointer)
     }
-
-    public static func sqrt(_ x: FloatList) -> Float {
+    public static func sqrt(_ x: FloatList) -> FloatList {
         return result(from: x) { result in
             vvsqrtf(result, x.pointer, x.countPointer)
         }
+    }
+    public static func sqrtInPlace(_ x: FloatList) {
+        vvsqrtf(x.pointer, x.pointer, x.countPointer)
     }
 
     public static func mod(_ x: FloatList, _ y: FloatList) -> FloatList {
@@ -480,8 +484,12 @@ public func exp<T>(_ x: List<T>) -> List<T> {
     return T.exp(x)
 }
 
-public func sqrt<T>(_ x: List<T>) -> T {
+public func sqrt<T>(_ x: List<T>) -> List<T> {
     return T.sqrt(x)
+}
+
+public func sqrtInPlace<T>(_ x: List<T>) {
+    T.sqrtInPlace(x)
 }
 
 public func mod<T>(_ x: List<T>, _ y: List<T>) -> List<T> {
