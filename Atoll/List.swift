@@ -28,6 +28,7 @@ public struct List<Element: Real> {
             pointer.deallocate(capacity: count)
         }
     }
+    
     fileprivate var wrappedValue: WrappedValue
     
     internal var value: UnsafeMutablePointer<Element> {
