@@ -70,6 +70,12 @@ public struct List<Element: Real> {
     public init(ones count: Int) {
         self.init(repeating: 1, count: count)
     }
+    
+    public init(from pointer: UnsafeMutablePointer<Element>, count: Int) {
+        self.count = count
+        self.wrappedValue = WrappedValue(count: count)
+        self.wrappedValue.pointer.assign(from: pointer, count: count)
+    }
 
     public func copy() -> List<Element> {
         let result = List<Element>.init(repeating: 0, count: count)

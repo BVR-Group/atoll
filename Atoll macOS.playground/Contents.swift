@@ -17,6 +17,12 @@ let listC: FloatList = [0,1,2,3,4,5,6,7,8,9]
 let listD = FloatList(with: 0...1, by: .pi/100)
 listD.count
 
+var listE = FloatList(from: listD.pointer, count: listD.count)
+listE + 1
+listD
+
+
+
 listA + listB
 listA - listB
 listA * listB
