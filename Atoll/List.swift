@@ -15,7 +15,24 @@ import simd
 /// `MutableCollection` and `RandomAccessCollection`.
 ///
 public struct List<Element: Real> {
-    internal var value: UnsafeMutablePointer<Element>
+    
+    internal class WrappedValue {
+        let pointer: UnsafeMutablePointer<Element>
+        let count: Int
+        init(count: Int) {
+            self.count = count
+            self.pointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
+        }
+        
+        deinit {
+            pointer.deallocate(capacity: count)
+        }
+    }
+    fileprivate var wrappedValue: WrappedValue
+    
+    internal var value: UnsafeMutablePointer<Element> {
+        return self.wrappedValue.pointer
+    }
 
     public var pointer: UnsafeMutablePointer<Element> {
         return value
@@ -41,7 +58,7 @@ public struct List<Element: Real> {
 
     public init(repeating element: Element, count: Int) {
         self.count = count
-        self.value = UnsafeMutablePointer<Element>.allocate(capacity: count)
+        self.wrappedValue = WrappedValue(count: count)
         _ = UnsafeMutableBufferPointer(start: value, count: count).initialize(from: (0..<count).map({ _ in return element }))
     }
 
