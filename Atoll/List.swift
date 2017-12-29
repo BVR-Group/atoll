@@ -17,8 +17,14 @@ import simd
 public struct List<Element: Real> {
     
     internal class WrappedValue {
-        let pointer: UnsafeMutablePointer<Element>
+        fileprivate let pointer: UnsafeMutablePointer<Element>
         let count: Int
+        
+        init(with pointer: UnsafeMutablePointer<Element>, and count: Int) {
+            self.count = count
+            self.pointer = pointer
+        }
+        
         init(count: Int) {
             self.count = count
             self.pointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
@@ -39,7 +45,7 @@ public struct List<Element: Real> {
         return value
     }
 
-    public let count: Int
+    public var count: Int
 
     public var countPointer: [Int32] {
         return [Int32(count)]
@@ -71,10 +77,15 @@ public struct List<Element: Real> {
         self.init(repeating: 1, count: count)
     }
     
-    public init(from pointer: UnsafeMutablePointer<Element>, count: Int) {
+    public init(copyFrom pointer: UnsafeMutablePointer<Element>, count: Int) {
         self.count = count
         self.wrappedValue = WrappedValue(count: count)
         self.wrappedValue.pointer.assign(from: pointer, count: count)
+    }
+    
+    public init(referencing pointer: UnsafeMutablePointer<Element>, count: Int) {
+        self.count = count
+        self.wrappedValue = WrappedValue(with: pointer, and: count)
     }
 
     public func copy() -> List<Element> {
@@ -146,4 +157,9 @@ extension List: CustomDebugStringConvertible {
     public var debugDescription: String {
         return self.map({ $0 }).debugDescription
     }
+}
+
+public func swap<Element>(_ lhs: inout List<Element>, _ rhs: inout List<Element>) {
+    swap(&lhs.wrappedValue, &rhs.wrappedValue)
+    swap(&lhs.count, &rhs.count)
 }

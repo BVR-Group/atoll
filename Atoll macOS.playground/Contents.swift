@@ -14,14 +14,26 @@ import Accelerate
 let listA: DoubleList = [0,1,2,3,4,5,6,7,8]
 var listB: DoubleList = [0,1,2,3,4,5,6,7,8,9]
 let listC: FloatList = [0,1,2,3,4,5,6,7,8,9]
+
 let listD = FloatList(with: 0...1, by: .pi/100)
-listD.count
+listD.pointer
 
-var listE = FloatList(from: listD.pointer, count: listD.count)
-listE + 1
+// Copies the values from D
+var listE = FloatList(copyFrom: listD.pointer, count: listD.count)
+listE = listE + 2
+listE.pointer
+
+// Ds values look good...
 listD
+listD.pointer
 
+// Makes a new FloatList using Ds memory but this is mutable!...
+var listF = FloatList(referencing: listD.pointer, count: listD.count)
+listF.pointer
+listF = listF * 2 // This will make a new allocation!
 
+// Seems to be corrupt now...
+listD
 
 listA + listB
 listA - listB
@@ -57,16 +69,9 @@ listA += listB
 listA *= .epsilon
 listA
 
-dump(exp(listA))
+
 exp(listA[5]) == exp(listA)[5]
 
-
-
-//dump(listA)
 let newList = listA.mirrored()
-dump(newList)
-dump(listB)
 listB.mirror()
-dump(listB)
-
 
